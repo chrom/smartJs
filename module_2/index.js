@@ -1,4 +1,4 @@
-var current = 0, selectedElement, selector;
+var current = 0, selectedElement, selector, isTreeNavigation = false;
 var buttonNext;
 var buttonPrev;
 var buttonSelector;
@@ -28,11 +28,7 @@ window.onload = function () {
 }
 
 function selectNode(event) {
-    getSelectedElements();
-
-    if (!selectedElement.length) {
-        return;
-    }
+    var element;
 
     hideActiveElement();
     switch (event.target.className) {
@@ -43,52 +39,82 @@ function selectNode(event) {
             current--;
             break;
         case 'nav-top':
-            current--;
+            element = selectedElement[current].parentElement;
             break;
         case 'nav-bottom':
-            current--;
+            element = selectedElement[current].firstElementChild;
             break;
         case 'nav-left':
-            current--;
+            element = selectedElement[current].previousElementSibling;
             break;
         case 'nav-right':
-            current--;
+            element = selectedElement[current].nextElementSibling;
             break;
         default:
+            getSelectedElements();
+            isTreeNavigation = false;
             break;
     }
+
+    if (selectedElement && !selectedElement.length) {
+        return;
+    }
+
+    if(element){
+        isTreeNavigation = true;
+        selectedElement = [];
+        selectedElement.push(element);
+        current = 0;
+    }
+
     showActiveElement();
 }
 
 
 function showActiveElement() {
+    treeNavigation();
     if (selectedElement.length === 1) {
         hideButton();
         selectedElement[0].classList.add('selected');
     } else if (selectedElement.length > 1) {
-        showPrevNextButton();
+        selectorNavigation();
         selectedElement[current].classList.add('selected');
     }
 }
 
+function treeNavigation() {
+    if (selectedElement[current].childElementCount > 0) {
+        navBottom.disabled = false;
+    } else {
+        navBottom.disabled = true;
+    }
+    if (selectedElement[current].parentNode) {
+        navTop.disabled = false;
+    } else {
+        navTop.disabled = true;
+    }
+    if (selectedElement[current].nextElementSibling) {
+        navRight.disabled = false;
+    } else {
+        navRight.disabled = true;
+    }
+    if (selectedElement[current].previousElementSibling) {
+        navLeft.disabled = false;
+    } else {
+        navLeft.disabled = true;
+    }
+}
 function hideButton() {
     buttonNext.disabled = true;
     buttonPrev.disabled = true;
-    if (selectedElement[current].children.length){
-        navBottom.disabled = true;
-    }
-    if (selectedElement[current].parentNode){
-        navTop.disabled = true;
-    }
-    if (selectedElement[current].nextSibling){
-        navLeft.disabled = true;
-    }
-    if (selectedElement[current].nextSibling){
-        navRight.disabled = true;
-    }
 }
 
-function showPrevNextButton() {
+function selectorNavigation() {
+    if (isTreeNavigation){
+        buttonNext.disabled = true;
+        buttonPrev.disabled = true;
+        return;
+    }
     if (selectedElement.length - 1 > current) {
         buttonNext.disabled = false;
     } else {
