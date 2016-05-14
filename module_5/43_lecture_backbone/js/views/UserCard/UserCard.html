@@ -1,0 +1,10 @@
+<div id="content" class="user-block">
+        <% items.forEach(function(item) { %>
+    <ul>
+        <li><%-item.attributes.id%></li>
+        <li><%-item.attributes.userId%></li>
+        <li><%-item.attributes.title%></li>
+        <li><%-item.attributes.completed%></li>
+    </ul>
+    <% }); %>
+</div>
