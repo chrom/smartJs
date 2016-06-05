@@ -1,0 +1,32 @@
+.person-li {
+	padding: 20px;
+	background: #000;
+	text-align: center;
+	cursor: pointer;
+	-webkit-transition: 1s ease;
+	-moz-transition: 1s ease;
+	-o-transition: 1s ease;
+	transition: 1s ease;
+	word-break: break-word;
+	text-transform: uppercase;
+	width: 100%;
+}
+
+.person-li.activated-false {
+	border: 3px solid #9A0909;
+	color: #D00808;
+}
+
+.person-li.activated-true {
+	border: 3px solid green;
+	color: green;
+}
+
+.person-li:hover {
+	border: 3px solid orange;
+	-webkit-transition: 1s ease;
+	-moz-transition: 1s ease;
+	-o-transition: 1s ease;
+	transition: 1s ease;
+	color:orange;
+}
