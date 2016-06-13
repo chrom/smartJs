@@ -2,7 +2,6 @@ import {View} from 'backbone';
 import template from 'lodash/template';
 import viewTemplate from './UserBoard.html';
 import styles from './UserBoard.css';
-import rootStyles from '../../../dist/styles.css';
 import styleHelper from '../../helper/style';
 import {UserView} from '../index';
 import $ from 'jquery';
@@ -12,7 +11,7 @@ const BackboneView = View.extend({
     el: '.content',
 
     initialize: function(){
-        this.render()
+        this.render();
     },
 
     render: function(){
