@@ -55,9 +55,9 @@ function registrationInit(){
 }
 
 function loginInit(){
-
     let userList;
     if (localStorage.getItem('token') !== null) {
+        console.log('1');
         loginPromiseFunc(false).then(data => {
             api.loginBtn.style.display = 'none';
             api.logoutBtn.style.display = 'inline-block';
@@ -72,11 +72,10 @@ function loginInit(){
         });
     }
 
-    function loginPromiseFunc(){
+    function loginPromiseFunc(tokenFlag){
         return new Promise(function(resolve, reject) {
             userList = new UserCollection();
-            console.log(userList);
-            userList.fetch().then(
+            userList.fetch(tokenFlag).then(
                 function(data){
                     if (data.error === undefined) {
                         userList.add(data);

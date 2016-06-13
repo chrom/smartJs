@@ -105,7 +105,6 @@ export let api =  {
 	},
 
 	settoken: function (value) {
-		localStorage.setItem('token', value);
 		this.token = value;
 	},
 

@@ -14,7 +14,7 @@ const LoginView = PopupView.extend({
 
     events: {
         'click #submit_login': 'userRequestF',
-        'focus #login-form input': 'removeErrorValidation',
+        'focus #login-form .form-control': 'removeErrorValidation',
         'click #login-form .close': 'removeView'
     },
 
@@ -46,6 +46,9 @@ const LoginView = PopupView.extend({
             fetch(url, loginRequest).then(data => data.json()).then(
                 function(response){
                     api.settoken(response.token);
+                    if (tempThis.$el.find('#remember-me')[0].checked) {
+                        localStorage.setItem('token', response.token);
+                    }
                     tempThis.removeView();
                     tempThis.resolveF();
                 },
