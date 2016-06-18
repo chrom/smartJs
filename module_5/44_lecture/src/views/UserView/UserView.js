@@ -30,7 +30,6 @@ const BackboneUserView = View.extend({
 	},
 
 	render: function() {
-		console.log(this);
 		this.$el.append(this.template({
 			person: this.model.attributes
 		}));

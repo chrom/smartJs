@@ -4,11 +4,19 @@ import {api} from '../api/api';
 
 var UsersCollection = Collection.extend({
     model: User,
+    skip: 0,
+    total: 0,
 
-    fetch: function(useToken){
+    setData: function(data) {
+        this.skip = data.skip;
+        this.total = data.total;
+    },
+
+    fetch: function(tempThis, useToken){
         return new Promise(function(resolve, reject) {
             api.loadUsers(useToken).then(
                 data => {
+                    tempThis.set(data.page, {remove:true});
                     resolve(data);
                 },
                 error => {
@@ -16,6 +24,7 @@ var UsersCollection = Collection.extend({
                 });
         });
     }
+
 });
 
 export default UsersCollection;

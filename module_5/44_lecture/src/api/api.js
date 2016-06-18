@@ -83,11 +83,9 @@ export let api =  {
 					const urlUsersList = 'http://tasks.smartjs.academy/users';
 					let headerUserListRequest = new Headers();
 					if (useToken === true) {
-						console.log('1');
 						headerUserListRequest.append("Authorization", "Bearer "+this.gettoken());
 					}
 					else {
-						console.log('2');
 						headerUserListRequest.append("Authorization", "Bearer "+ localStorage.getItem('token'));
 					}
 					let userListRequest = {

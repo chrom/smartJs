@@ -2,6 +2,7 @@
 import {Router, history} from 'backbone';
 import {UserBoard} from './views/index';
 import UserCollection from './collections/UsersCollection';
+import PaginationView from './views/PaginationView/PaginationView';
 import {LoginForm} from './views/index';
 import {api} from './api/api';
 
@@ -57,7 +58,6 @@ function registrationInit(){
 function loginInit(){
     let userList;
     if (localStorage.getItem('token') !== null) {
-        console.log('1');
         loginPromiseFunc(false).then(data => {
             api.loginBtn.style.display = 'none';
             api.logoutBtn.style.display = 'inline-block';
@@ -75,11 +75,13 @@ function loginInit(){
     function loginPromiseFunc(tokenFlag){
         return new Promise(function(resolve, reject) {
             userList = new UserCollection();
-            userList.fetch(tokenFlag).then(
+            userList.fetch(userList, tokenFlag).then(
                 function(data){
                     if (data.error === undefined) {
-                        userList.add(data);
+                        userList.setData(data);
                         let UsersListBoard = new UserBoard({collection: userList});
+                        let PaginationBoard = new PaginationView({});
+                        PaginationBoard.setCollection(userList);
                         resolve(data);
                     }
                     else {
@@ -118,3 +120,5 @@ window.addEventListener('load', () => {
 // когда подключаем - если без скобок - ищет только то что дефолтный експорт
 // разобраться с роутером. нужна чтоб 1 функция загружалась на любой роут
 // почему по клику не создается еще eventlistener?  history.navigate не переходит на ссылку если мы уже на ней (10 раз кликнуть на регистрацию - только 1 вызов)
+
+// метод fetch переделать. он должен сам сразу загружать в коллекцию данные а не в index.js
