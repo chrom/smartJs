@@ -92,8 +92,6 @@ function loginInit(){
             );
         });
     }
-
-
 }
 
 const AppRouter = Router.extend({
