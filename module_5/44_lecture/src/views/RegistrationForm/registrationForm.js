@@ -1,7 +1,7 @@
 import PopupView from '../PopupView/popupView';
 import template from 'lodash/template';
-import viewTemplate from './registrationForm.html';
-import styles from './registrationForm.css';
+import viewTemplate from './RegistrationForm.html';
+import styles from './RegistrationForm.css';
 import rootStyles from '../../../dist/styles.css';
 import styleHelper from '../../helper/style';
 import {validationHelper} from '../../helper/error';
@@ -34,7 +34,7 @@ const RegistrationView = PopupView.extend({
             const confirmPassword = document.querySelector('#confirmPassword');
             let formArray = [{email: emailField.value},{password: password.value},{confirmPassword: confirmPassword.value}];
             validationHelper(formArray, this.$el);
-        }
+        };
 
         const checkAsyncValidate = (e) => {
             e.preventDefault();

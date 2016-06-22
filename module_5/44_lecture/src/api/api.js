@@ -1,35 +1,30 @@
-/**
- * Created by user on 11.06.2016.
- */
-import {registrationForm} from '../views/index';
+import {RegistrationForm} from '../views/index';
 import {LoginForm} from '../views/index';
 import {ConfirmPopup} from '../views/index';
 
 export let api =  {
 
-	initialize: function () {
-		// вытягявает из localstorage token если он есть и грузить сразу список
-		this.registrBtn = null;
-		this.loginBtn = null;
-		this.logoutBtn = null;
+	initialize: function (key, value) {
+		this[key] = value;
 	},
 
 	login: function () {
-		var loginPopup = new LoginForm();
+		let loginPopup = new LoginForm();
 		loginPopup.render();
 		$('.control-panel-block').html(loginPopup.$el);
 		return loginPopup.promise;
 	},
 
-	savelogin: function(){
-
-	},
-
 	register: function () {
-		var regPopup = new registrationForm();
+		let regPopup = new RegistrationForm();
 		regPopup.render();
 		$('.control-panel-block').html(regPopup.$el);
+		this.initialize('registration',regPopup);
 		return regPopup.promise;
+	},
+
+	removeRegister: function(){
+		if (this['registration']!==undefined) { this['registration'].remove() }
 	},
 
 	setRequestHeader: function(){
@@ -72,15 +67,15 @@ export let api =  {
 	},
 
 	confirm: function () {
-		var confirmPopup = new ConfirmPopup();
+		let confirmPopup = new ConfirmPopup();
 		confirmPopup.render();
 		$('html body').append(confirmPopup.$el);
 		return confirmPopup.promise;
 	},
 
-	loadUsers: function (useToken) {
+	loadUsers: function (url, useToken) {
 		return new Promise((resolve, reject) => {
-					const urlUsersList = 'http://tasks.smartjs.academy/users';
+					const urlUsersList = url;
 					let headerUserListRequest = new Headers();
 					if (useToken === true) {
 						headerUserListRequest.append("Authorization", "Bearer "+this.gettoken());

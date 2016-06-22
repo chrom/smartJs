@@ -15,6 +15,7 @@ const BackboneView = View.extend({
     },
 
     render: function(){
+        this.$el[0].innerHTML = '';
         const fragment = document.createDocumentFragment();
         this.collection.each(function(user){
             const userView = new UserView({model: user});

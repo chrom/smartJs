@@ -12,15 +12,13 @@ var UsersCollection = Collection.extend({
         this.total = data.total;
     },
 
-    fetch: function(tempThis, useToken){
+    fetch: function(url, tempThis, useToken){
         return new Promise(function(resolve, reject) {
-            api.loadUsers(useToken).then(
+            api.loadUsers(url, useToken).then(
                 data => {
-                    tempThis.set(data.page, {remove:true});
+                    tempThis.setData(data);
+                    tempThis.set(data.page, {reset:true});
                     resolve(data);
-                },
-                error => {
-                    throw new Error('Some problem with request. More info: ' + error);
                 });
         });
     }
