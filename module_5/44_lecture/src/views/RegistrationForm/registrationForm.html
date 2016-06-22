@@ -1,0 +1,28 @@
+<div class="modal fade" id="registration-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Registration form</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="email" placeholder="Email" required="" autofocus="">
+                        <span class="error-msg" data-error-for="email">Check Email address.</span>
+                        <span class="error-msg" data-error-for="async-email">This user was already registered.</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="password" placeholder="Password" required="" >
+                        <span class="error-msg" data-error-for="password">Password from 6 symbols (at least 1 number ) and should be match.</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" required="" >
+                        <span class="error-msg" data-error-for="confirmPassword">Password from 6 symbols (at least 1 number ) and should be match.</span>
+                    </div>
+                    <button type="submit" id="submit_registration" class="btn btn-lg btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

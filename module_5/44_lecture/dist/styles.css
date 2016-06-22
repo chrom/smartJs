@@ -1,0 +1,118 @@
+body {
+	width: 100%;
+	height: 100%;
+	background: #131313;
+	margin:0;
+	display: inline-block;
+	position: relative;
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+header {
+	display: block;
+	margin-bottom: 0;
+}
+
+.content {
+	float: right;
+	width: 75%;
+	padding: 2%;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
+.content > div {
+	width: 30%;
+	margin: 1.5%;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+aside {
+	float: left;
+	width: 25%;
+	padding: 2%;
+}
+
+.buttons-form {
+	padding: 50px;
+	text-align: center;
+}
+
+.buttons-form .btn.btn-primary {
+	padding: 0;
+	margin: 0 20px;
+	float: none;
+	display: inline-block;
+}
+
+.buttons-form > .btn.btn-primary {
+	padding: 10px 15px;
+}
+
+.buttons-form .btn.btn-primary a,
+.buttons-form .nav .btn.btn-primary a:hover,
+.buttons-form .nav .btn.btn-primary a:focus {
+	color: #fff;
+	background-color: transparent;
+}
+
+.buttons-form .btn-primary:hover,
+.buttons-form .btn-primary:focus {
+	color: #fff;
+	background-color: #286090;
+	border-color: #204d74;
+}
+
+#logout-popup-btn {
+	display: none;
+}
+
+.error-msg {
+	font-size: 12px;
+	color: red;
+	padding: 5px 0;
+	display: none;
+}
+
+.visible-error {
+	display: block;
+}
+
+.btn {
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	border-radius: 4px;
+	outline: none;
+	border: 0;
+}
+
+.users-list {
+	padding: 20px;
+	display: inline-block;
+	width: 100%;
+}

@@ -1,0 +1,44 @@
+.popover-block {
+	display: block;
+	position: static;
+}
+
+.ok-link {
+	border: 1px solid #265a88;
+}
+
+.remove-link {
+	border: 1px solid #000;
+}
+
+.confirm-title {
+	text-align: center;
+}
+
+.confirm-content {
+	padding: 20px;
+}
+
+.overlay-wrapper {
+	position: fixed;
+	top:0;
+	left:0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(255,255,255,0.4);
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	min-height: 24em;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+}

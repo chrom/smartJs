@@ -1,0 +1,27 @@
+.navigation-block {
+	display: inline-block;
+	width: 100%;
+	clear: both;
+}
+
+.pagination-list {
+	margin: 20px 2%;
+	display: inline-block;
+	clear: both;
+	width: 98%;
+	text-align: center;
+}
+
+
+.pagination-list .pagination-item {
+	margin: 8px;
+	border-radius: 0 !important;
+	border: 3px solid #337ab7;
+}
+
+.pagination-list .pagination-item:hover,
+.pagination-list .pagination-item:focus {
+	color:#fff;
+	background:#337ab7;
+	border: 3px solid #337ab7;
+}
