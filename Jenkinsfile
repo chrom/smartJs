@@ -8,7 +8,8 @@ pipeline {
   stages {
     stage('init') {
       steps {
-        echo 'Init'
+        sh '''pwd;
+'''
       }
     }
   }
